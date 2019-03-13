@@ -78,7 +78,7 @@
                 <configuration>
                     <!--<rerunFailingTestsCount>1</rerunFailingTestsCount>-->
                     <includes>
-                        <include>**/bdd/*.java</include>
+                        <include>**/*.java</include>
                     </includes>
                     <!--<parallel>classes</parallel>-->
                     <!--<threadCount>1</threadCount>-->
