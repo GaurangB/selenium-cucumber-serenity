@@ -1,0 +1,50 @@
+File: devops-config
+
+Version: 1.0.0
+
+BasicVars:
+  build_type: mvn
+  package_type: artifact
+  artifact_version: 1.0.0
+  aws_region: us-west-2
+  aws_vpc_id: 1234567890
+  finished_goods_repo:
+  additional_finished_goods_repo: com-some-component-repo
+  aws_upload_files:
+  repo_url: https://github.com/SomeOrg/com-some-component-repo
+  custom_pre_commands:
+  custom_post_commands:
+
+MvnVars:
+  mvn_additional_args: -P app-compile
+  mvn_deploy: false
+  mvn_deploy_additional_args:
+  java_version: "11" #only valid param is 8 or 11.
+
+NpmVars:
+  node_version: 10.12.20
+  run_npm_validate: false
+  npm_publish: true
+  npm_registry: http: //internal-jfrog-11111111111.us-east-1.elb.amazonaws.com/api/npm/
+  # CAUTION: only one of the following publish commands should be activated
+  npm_publish_context: some-app/artifact #Use this option to enable auto-increment
+  #npm_publish_args: some-app/artifact #Use this option to disable auto-increment, will publish the version of your package
+
+SonarVars:
+  aws_ run_sonar: true
+  sonar_additional_args: -X
+  sonar_server: enterprise
+
+TestingVars:
+  test_unit_command: mvn test -P app-unit-test
+  test_component_command: mvn verify -f surveillance-component-test/pom.xml serenity:check
+  test_contract_command:
+  test_integration_command:
+  publish_unit_test: true
+  unit_report_name: Unit-test-report
+  unit_report_directory: some-app/coverage
+  unit_report_file: index.html
+  publish_component_test: true
+  component_report_name: Component-test-report
+  component_report_directory: some-component-test/target/site/serenity
+  component_report_file: index.html
